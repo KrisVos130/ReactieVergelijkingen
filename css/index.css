@@ -1,0 +1,11 @@
+.input {
+    width: auto !important;
+    min-width: 30px !important;
+    max-width: 60px !important;
+    font-size: 2.92rem !important;
+    line-height: 110% !important;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

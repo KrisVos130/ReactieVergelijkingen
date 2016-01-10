@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Reactievergelijkingen - Makkelijk</title>
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script>
+        var obj = {
+            before: ["O2", "H"],
+            after: ["H2O"]
+        };
+        var obj2 = {
+            before: ["CO2", "H2O"],
+            after: ["HCO3", "H3O"]
+        };
+        var obj3 = {
+            before: ["Na2HPO4"],
+            after: ["Na4P2O7", "H2O"]
+        };
+        function setup(settings) {
+            var html = "";
+            settings.before.forEach(function(deel, index, array) {
+                console.log(index, length);
+                deel = deel.replace(/([0-9]+)/g, function(nummer) {
+                    return "<sub>" + nummer + "</sub>";
+                });
+                console.log(deel);
+                var end = '+ </span>';
+                if (array.length - 1 === index) {
+                    end = '</span> <i class="material-icons small">trending_flat</i> ';
+                }
+                html += '<input type="number" class="input center-align blue-text text-accent-2"/><span> ' + deel + ' ' + end;
+            });
+            settings.after.forEach(function(deel, index, array) {
+                console.log(index, length);
+                deel = deel.replace(/([0-9]+)/g, function(nummer) {
+                    return "<sub>" + nummer + "</sub>";
+                });
+                console.log(deel);
+                var end = '+ </span>';
+                if (array.length - 1 === index) {
+                    end = '';
+                }
+                html += '<input type="number" class="input center-align blue-text text-accent-2"/><span> ' + deel + ' ' + end;
+            });
+            console.log(html);
+            $("#vergelijking").html(html);
+        }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper blue">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="1.html">Makkelijk</a></li>
+            <li><a href="2.html">Middelmatig</a></li>
+            <li><a href="3.html">Moeilijk</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col m8 l8 s8 offset-l2 offset-m2 offset-s2">
+        <div class="card-panel green accent-2 white-text">
+           <h4 id="vergelijking" class="center">
+               <input type="number" class="input center-align blue-text text-accent-2"/>
+               <span> O<sub>2</sub> + </span>
+               <input type="number" class="input center-align blue-text text-accent-2"/>
+               <span> H</span>
+               <i class="material-icons small">trending_flat</i>
+               <input type="number" class="input center-align blue-text text-accent-2"/>
+               <span> H<sub>2</sub>O</span>
+           </h4>
+        </div>
+    </div>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>
