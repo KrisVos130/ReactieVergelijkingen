@@ -2,13 +2,13 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Reactievergelijkingen - Makkelijk</title>
+    <title>Revragen_afrgelijkingen - Makkelijk</title>
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="css/index.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
 
     <script>
         var obj = {
@@ -32,49 +32,63 @@
             $("#totaal_vragen").text(vergelijkingen.length);
             function setup(vergelijking, nummer) {
                 var html = "";
-                vergelijking.before.forEach(function (deel, index, array) {
-                    console.log(index, length);
-                    deel = deel.replace(/([0-9]+)/g, function (nummer) {
-                        return "<sub>" + nummer + "</sub>";
+                var inputNum = 0;
+                if (vergelijkingen.length < nummer) {
+                    $("#vragen_af").text(vergelijkingen.length);
+                    $("#progress_bar").css({width: "100%"});
+                } else {
+                    vergelijking.before.forEach(function (deel, index, array) {
+                        deel = deel.replace(/([0-9]+)/g, function (nummer) {
+                            return "<sub>" + nummer + "</sub>";
+                        });
+                        var end = '+ </span>';
+                        if (array.length - 1 === index) {
+                            end = '</span> <i class="material-icons small">trending_flat</i> ';
+                        }
+                        html += '<input type="number" class="input center-align blue-text text-accent-2" id="input-' + inputNum + '"><span> ' + deel + ' ' + end;
+                        inputNum++;
                     });
-                    console.log(deel);
-                    var end = '+ </span>';
-                    if (array.length - 1 === index) {
-                        end = '</span> <i class="material-icons small">trending_flat</i> ';
-                    }
-                    html += '<input type="number" class="input center-align blue-text text-accent-2" id=""/><span> ' + deel + ' ' + end;
-                });
-                vergelijking.after.forEach(function (deel, index, array) {
-                    console.log(index, length);
-                    deel = deel.replace(/([0-9]+)/g, function (nummer) {
-                        return "<sub>" + nummer + "</sub>";
+                    vergelijking.after.forEach(function (deel, index, array) {
+                        deel = deel.replace(/([0-9]+)/g, function (nummer) {
+                            return "<sub>" + nummer + "</sub>";
+                        });
+                        var end = '+ </span>';
+                        if (array.length - 1 === index) {
+                            end = '';
+                        }
+                        html += '<input type="number" class="input center-align blue-text text-accent-2" id="input-' + inputNum + '"/><span> ' + deel + ' ' + end;
+                        inputNum++;
                     });
-                    console.log(deel);
-                    var end = '+ </span>';
-                    if (array.length - 1 === index) {
-                        end = '';
-                    }
-                    html += '<input type="number" class="input center-align blue-text text-accent-2"/><span> ' + deel + ' ' + end;
-                });
 
-                var procent = Math.round(nummer / vergelijkingen.length * 100);
-                $("#actieve_vraag").text(nummer);
-                $("#progress_bar").css({width: procent + "%"});
-                console.log(html);
-                $("#vergelijking").html(html);
-                $("input").on("input", function() {
-                    if (colored === true) {
-                        $("#vergelijking").removeClass("red-text");
-                        colored = false;
-                    }
-                });
+                    var procent = Math.round((nummer - 1) / vergelijkingen.length * 100);
+                    $("#vragen_af").text(nummer - 1);
+                    $("#progress_bar").css({width: procent + "%"});
+                    $("#vergelijking").html(html);
+                    $("input").on("input", function () {
+                        if (colored === true) {
+                            $("#vergelijking").removeClass("red-text");
+                            colored = false;
+                        }
+                    });
+                }
             }
             setup(vergelijkingen[0], current);
 
             $("#check").on("click", function() {
-                console.log("Test!", current);
-                $("#vergelijking").addClass("red-text");
-                colored = true;
+                var vergelijking = vergelijkingen[current - 1];
+                var correct = true;
+                vergelijking.solution.forEach(function(solution, num) {
+                    if (Number($("#input-" + num).val()) !== solution) {
+                        correct = false;
+                    }
+                });
+                if (!correct) {
+                    $("#vergelijking").addClass("red-text");
+                    colored = true;
+                } else {
+                    current++;
+                    setup(vergelijkingen[current - 1], current);
+                }
             });
         });
         var colored = false;
@@ -96,7 +110,7 @@
     <div class="col m8 l8 s8 offset-l2 offset-m2 offset-s2">
         <div class="card-panel green accent-2 white-text">
             <div class="row">
-                <p class="center-align">Vraag <span id="actieve_vraag"></span> / <span id="totaal_vragen"></span></p>
+                <p class="center-align">Vraag <span id="vragen_af"></span> / <span id="totaal_vragen"></span></p>
                 <div class="progress col m8 l8 s8 offset-l2 offset-m2 offset-l2">
                     <div class="determinate" id="progress_bar" style="width: 50%"></div>
                 </div>
