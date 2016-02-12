@@ -1,0 +1,107 @@
+[
+  {
+    "before": ["O2", "H"],
+    "after": ["H2O"],
+    "solution": [1, 4, 2]
+  },
+  {
+    "before": ["NaH2PO4"],
+    "after": ["NaPO3", "H2O"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["H2CO3"],
+    "after": ["H2O", "CO2"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["BaSO4", "H2SO4"],
+    "after": ["Ba(HSO4)2"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["CaCO3"],
+    "after": ["CaO", "CO2"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["CaO", "H2O"],
+    "after": ["Ca(OH)2"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["H2SO3"],
+    "after": ["H2O", "SO2"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["NaPO3", "CuO"],
+    "after": ["NaCuPO4"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["Li2O", "H2O"],
+    "after": ["LiOH"],
+    "solution": [1, 1, 2]
+  },
+  {
+    "before": ["CCl4", "O2"],
+    "after": ["CO2", "Cl2"],
+    "solution": [1, 1, 1, 2]
+  },
+  {
+    "before": ["FeS", "HCl"],
+    "after": ["H2S", "FeCl2"],
+    "solution": [1, 2, 1, 1]
+  },
+  {
+    "before": ["KNO3", "KNO2"],
+    "after": ["O2"],
+    "solution": [2, 2, 1]
+  },
+  {
+    "before": ["Pb(NO3)2"],
+    "after": ["PbO", "NO2", "O2"],
+    "solution": [2, 2, 4, 1]
+  },
+  {
+    "before": ["Na", "H2O"],
+    "after": ["NaOH", "H2"],
+    "solution": [2, 2, 2, 1]
+  },
+  {
+    "before": ["Fe", "H2O"],
+    "after": ["Fe3O4", "H2"],
+    "solution": [3, 4, 1, 4]
+  },
+  {
+    "before": ["C2H5OH", "O2"],
+    "after": ["CO2", "H2O"],
+    "solution": [2, 6, 4, 6]
+  },
+  {
+    "before": ["Fe3O4", "H2"],
+    "after": ["Fe", "H2O"],
+    "solution": [1, 4, 3, 4]
+  },
+  {
+    "before": ["CO2", "NaOH"],
+    "after": ["NaHCO3"],
+    "solution": [1, 1, 1]
+  },
+  {
+    "before": ["NaCl", "H2SO4"],
+    "after": ["HCl", "NaHSO4"],
+    "solution": [1, 1, 1, 1]
+  },
+  {
+    "before": ["CaC2", "H2O"],
+    "after": ["C2H2", "Ca(OH)2"],
+    "solution": [1, 2, 1, 1]
+  },
+  {
+    "before": ["C8H18", "O2"],
+    "after": ["CO2", "H2O"],
+    "solution": [2, 25, 16, 18]
+  }
+]
