@@ -9,7 +9,6 @@
     <link type="text/css" rel="stylesheet" href="css/index.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
 
     <script>
         var obj = {
@@ -27,22 +26,7 @@
             after: ["Na4P2O7", "H2O"],
             solution: [2, 1, 1]
         };
-        var obj4 = {
-            before: ["Ca(OH)2", "HCI"],
-            after: ["CaCl2", "H2O"],
-            solution: [0, 2, 0, 2]
-        };
-        var obj5 = {
-            before: ["Mg3N2", "H2O"],
-            after: ["MgO", "NH3"],
-            solution: [0, 3, 3, 2]
-        };
-        var obj6 = {
-            before: ["C2H5OH", "O2"],
-            after: ["CO2", "H2O"],
-            solution: [0, 3, 2, 3]
-        };
-        var vergelijkingen = [obj, obj2, obj3, obj4, obj5, obj6];
+        var vergelijkingen = [obj, obj2, obj3];
         var current = 1;
         $(document).ready(function() {
             $("#totaal_vragen").text(vergelijkingen.length);
@@ -104,9 +88,6 @@
                 } else {
                     current++;
                     setup(vergelijkingen[current - 1], current);
-                    createCookie('task1','2',2)
-                    var coo0okie = readCookie('task1')
-                    console.log("The cookies:" + coo0okie);
                 }
             });
         });
